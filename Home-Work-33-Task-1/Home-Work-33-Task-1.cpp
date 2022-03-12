@@ -20,6 +20,7 @@ class MoreGoodsError : public std::exception {
 void goodsLoad(std::map<std::string, int>& goods) {
     int counter = 0;
     std::cout << "Load goods into shoping base.\n";
+
     do {
         std::string partNumber;
         int quantity;
