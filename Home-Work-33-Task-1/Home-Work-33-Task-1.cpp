@@ -46,4 +46,4 @@ void printGoods(std::map<std::string, int>& goods) {
 
 int main()
 {
-    std::map<std::string, int> goods;    goodsLoad(goods);    try {        int counter = 0;        do {            goShopping(goods);            printGoods(goods);        } while (++counter < GOODSMAX);    }    catch (std::exception& exc) {        std::cerr << "ERROR! " << exc.what() << std::endl;    }    catch (std::exception& exc) {        std::cerr << "Some kind of problem happened!"    }    return;}
+    std::map<std::string, int> goods;    goodsLoad(goods);    try {        int counter = 0;        do {            goShopping(goods);            printGoods(goods);        } while (++counter < GOODSMAX);    }    catch (std::exception& exc) {        std::cerr << "ERROR! " << exc.what() << std::endl;    }    catch (std::exception& exc) {        std::cerr << "Some kind of problem happened!";    }    return;}
