@@ -30,9 +30,7 @@ void goodsLoad(std::map<std::string, int>& goods) {
 }
 
 void goShopping(std::map<std::string, int>& goods) {
-    std::cout << "\nGo shopping. Make your choise.\n";
-        std::string partNumber;    int quantity;    std::cin >> partNumber >> quantity;
-
+    std::cout << "\nGo shopping. Make your choise.\n";    std::string partNumber;    int quantity;    std::cin >> partNumber >> quantity;
     std::map<std::string, int>::iterator it = goods.find(partNumber);
     if (it == goods.end()) throw NoGoodsError();
     if (quantity > it->second) throw MoreGoodsError();
