@@ -30,7 +30,7 @@ void goodsLoad(std::map<std::string, int>& goods) {
 }
 
 void goShopping(std::map<std::string, int>& goods) {
-    std::cout << "Go shopping. Make your choise.\n";
+    std::cout << "\nGo shopping. Make your choise.\n";
         std::string partNumber;    int quantity;    std::cin >> partNumber >> quantity;
 
     std::map<std::string, int>::iterator it = goods.find(partNumber);
@@ -46,4 +46,4 @@ void printGoods(std::map<std::string, int>& goods) {
 
 int main()
 {
-    std::map<std::string, int> goods;    goodsLoad(goods);    try {        int counter = 0;        do {            goShopping(goods);            printGoods(goods);        } while (++counter < GOODSMAX);    }    catch (std::exception& exc) {        std::cerr << "ERROR! " << exc.what() << std::endl;    }}
+    std::map<std::string, int> goods;    goodsLoad(goods);    try {        int counter = 0;        do {            goShopping(goods);            printGoods(goods);        } while (++counter < GOODSMAX);    }    catch (std::exception& exc) {        std::cerr << "ERROR! " << exc.what() << std::endl;    }    catch (std::exception& exc) {        std::cerr << "Some kind of problem happened!"    }    return;}
