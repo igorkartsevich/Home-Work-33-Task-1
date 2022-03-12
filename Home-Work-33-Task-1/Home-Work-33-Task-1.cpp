@@ -30,7 +30,10 @@ void goodsLoad(std::map<std::string, int>& goods) {
 }
 
 void goShopping(std::map<std::string, int>& goods) {
-    std::cout << "\nGo shopping. Make your choise.\n";    std::string partNumber;    int quantity;    std::cin >> partNumber >> quantity;
+    std::cout << "\nGo shopping. Make your choise.\n";
+    std::string partNumber;
+    int quantity;
+    std::cin >> partNumber >> quantity;
     std::map<std::string, int>::iterator it = goods.find(partNumber);
     if (it == goods.end()) throw NoGoodsError();
     if (quantity > it->second) throw MoreGoodsError();
@@ -44,4 +47,22 @@ void printGoods(std::map<std::string, int>& goods) {
 
 int main()
 {
-    std::map<std::string, int> goods;    goodsLoad(goods);    try {        int counter = 0;        do {            goShopping(goods);            printGoods(goods);        } while (++counter < GOODSMAX);    }    catch (std::exception& exc) {        std::cerr << "ERROR! " << exc.what() << std::endl;    }    catch (std::exception& exc) {        std::cerr << "Some kind of problem happened!";    }    return;}
+    std::map<std::string, int> goods;
+    goodsLoad(goods);
+
+    try {
+        int counter = 0;
+        do {
+            goShopping(goods);
+            printGoods(goods);
+        } while (++counter < GOODSMAX);
+    }
+    catch (std::exception& exc) {
+        std::cerr << "ERROR! " << exc.what() << std::endl;
+    }
+    catch (...) {
+        std::cerr << "Some kind of problem happened!";
+    }
+
+    return 0;
+}
