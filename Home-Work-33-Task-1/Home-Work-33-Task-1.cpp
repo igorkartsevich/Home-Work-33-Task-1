@@ -5,18 +5,6 @@
 
 #define GOODSMAX 5
 
-class NoGoodsError : public std::exception {
-    const char* what() const noexcept override {
-        return "There is no selected product!";
-    }
-};
-
-class MoreGoodsError : public std::exception {
-    const char* what() const noexcept override {
-        return "The ordered quantity is more than available!";
-    }
-};
-
 void goodsLoad(std::map<std::string, int>& goods) {
     int counter = 0;
     std::cout << "Load goods into shoping base.\n";
@@ -37,8 +25,8 @@ void goShopping(std::map<std::string, int>& goods) {
     std::cin >> partNumber >> quantity;
 
     std::map<std::string, int>::iterator it = goods.find(partNumber);
-    if (it == goods.end()) throw NoGoodsError();
-    if (quantity > it->second) throw MoreGoodsError();
+    if (it == goods.end()) throw std::invalid_argument("There is no selected product!");
+    if (quantity > it->second) throw std::invalid_argument("The ordered quantity is more than available!");
     if (quantity == it->second) goods.erase(it); else it->second -= quantity;
 }
 
